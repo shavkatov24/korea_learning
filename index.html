@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="icon" type="img" href="./img/logo.png">
+    <title>K-LEARN 🇰🇷 - Koreys Tilini O'rganish Platformasi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome ikonalari -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVIGATSIYA -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-area" onclick="showSection('home')">
+                <span class="flag-icon">🇰🇷</span>
+                <span class="logo-text">K-LEARN</span>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <a href="#" class="nav-item active" onclick="navigateTo('home', event)"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+                <a href="#" class="nav-item" onclick="navigateTo('hangul', event)"><i class="fa-solid fa-language"></i> Hangul</a>
+                <a href="#" class="nav-item" onclick="navigateTo('vocab', event)"><i class="fa-solid fa-book-bookmark"></i> Lug'at</a>
+                <a href="#" class="nav-item" onclick="navigateTo('grammar', event)"><i class="fa-solid fa-graduation-cap"></i> Grammatika</a>
+                <a href="#" class="nav-item" onclick="navigateTo('quiz', event)"><i class="fa-solid fa-pen-to-square"></i> Testlar</a>
+                <a href="#" class="nav-item" onclick="navigateTo('results', event)"><i class="fa-solid fa-chart-line"></i> Natijalarim</a>
+            </nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN KONTENT -->
+    <main class="main-content">
+
+        <!-- 1. BOSH SAHIFA -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="badge">🇰🇷 Janubiy Koreya Til va Madaniyati</div>
+                    <h1>Koreys tilini biz bilan <span class="text-red">oson</span> va <span class="text-blue">qiziqarli</span> o'rganing!</h1>
+                    <p class="hero-subtext">Hangul alifbosi, zamonaviy lug'at, qoidalar va interaktiv testlar orqali koreys tilini noldan mukammal o'rganing.</p>
+                    <div class="hero-korean-quote">
+                        "한국어를 쉽고 재미있게 배워보세요!"
+                    </div>
+                    <div class="hero-btns">
+                        <button class="btn btn-primary" onclick="showSection('quiz')"><i class="fa-solid fa-play"></i> O'rganishni boshlash</button>
+                        <button class="btn btn-outline" onclick="showSection('hangul')"><i class="fa-solid fa-spell-check"></i> Alifboni ko'rish</button>
+                    </div>
+                </div>
+                <div class="hero-image-box">
+                    <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=800&q=80" alt="Seoul South Korea" class="hero-img">
+                    <div class="floating-card flex-card">
+                        <div class="f-icon">🗣️</div>
+                        <div>
+                            <h4>안녕하세요!</h4>
+                            <p>Annyeonghaseyo - Salom!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xususiyatlar -->
+            <div class="features-grid">
+                <div class="feature-card" onclick="showSection('hangul')">
+                    <div class="f-badge red-bg"><i class="fa-solid fa-font"></i></div>
+                    <h3>Hangul Alifbosi</h3>
+                    <p>Unli va undosh harflarning to'g'ri talaffuzi hamda yozilish qoidalari.</p>
+                </div>
+                <div class="feature-card" onclick="showSection('vocab')">
+                    <div class="f-badge blue-bg"><i class="fa-solid fa-book"></i></div>
+                    <h3>Boshlang'ich Lug'at</h3>
+                    <p>Eng ko'p ishlatiladigan koreyscha so'zlar, ovozli aytilishi va kartochkalar.</p>
+                </div>
+                <div class="feature-card" onclick="showSection('grammar')">
+                    <div class="f-badge red-bg"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Sodda Grammatika</h3>
+                    <p>O'zbek tiliga moslashtirilgan sodda tushuntirishlar va mashqlar.</p>
+                </div>
+                <div class="feature-card" onclick="showSection('quiz')">
+                    <div class="f-badge blue-bg"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3>10 ta Interaktiv Test</h3>
+                    <p>Bilimingizni sinab ko'ring, ball to'plang va natijalarni kuzating.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. HANGUL ALIFBOSI -->
+        <section id="hangul" class="page-section">
+            <div class="section-header">
+                <h2>Koreys Alifbosi — Hangul (한글)</h2>
+                <p>Harflarni bosing va ularning audio talaffuzini tinglang!</p>
+            </div>
+
+            <div class="hangul-container">
+                <h3 class="subsection-title"><i class="fa-solid fa-volume-high"></i> Undosh harflar (자음)</h3>
+                <div class="hangul-grid" id="consonantsGrid"></div>
+
+                <h3 class="subsection-title" style="margin-top: 2rem;"><i class="fa-solid fa-volume-high"></i> Unli harflar (모음)</h3>
+                <div class="hangul-grid" id="vowelsGrid"></div>
+            </div>
+        </section>
+
+        <!-- 3. LUG'AT -->
+        <section id="vocab" class="page-section">
+            <div class="section-header">
+                <h2>Boshlang'ich Lug'at (단어)</h2>
+                <p>Kundalik iboralar va muhim so'zlar. Talaffuzni eshitish uchun kartochkalarni bosing!</p>
+            </div>
+
+            <div class="search-bar-box">
+                <input type="text" id="vocabSearch" placeholder="So'z yoki tarjimasini qidirish..." oninput="filterVocab()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="vocab-grid" id="vocabGrid"></div>
+        </section>
+
+        <!-- 4. GRAMMATIKA -->
+        <section id="grammar" class="page-section">
+            <div class="section-header">
+                <h2>Grammatika Bo'limi (문법)</h2>
+                <p>Koreys tili grammatikasini o'zbek tilida sodda va tushunarli tartibda o'rganing.</p>
+            </div>
+
+            <div class="grammar-list" id="grammarList"></div>
+        </section>
+
+        <!-- 5. TESTLAR -->
+        <section id="quiz" class="page-section">
+            <div class="quiz-container">
+                <div class="quiz-header-card">
+                    <div class="quiz-top-info">
+                        <span class="quiz-badge"><i class="fa-solid fa-question"></i> Savol <span id="currentQNum">1</span> / 10</span>
+                        <span class="score-live"><i class="fa-solid fa-star"></i> Ball: <span id="liveScore">0</span></span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="quizProgress"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-card" id="quizCard">
+                    <div class="quiz-image-box" id="qImageBox">
+                        <img id="qImage" src="" alt="Quiz visual">
+                        <div class="fallback-img-icon" id="qFallbackIcon"><i class="fa-solid fa-image"></i></div>
+                    </div>
+
+                    <h3 id="qText" class="q-title">Savol yuklanmoqda...</h3>
+
+                    <div class="options-grid" id="optionsGrid"></div>
+
+                    <div class="explanation-box" id="explanationBox">
+                        <div class="exp-title" id="expTitle">Izoh:</div>
+                        <p id="expText"></p>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Keyingi savol <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Test Oxiridagi Natija Oynasi -->
+                <div class="quiz-results-card hidden" id="quizResultBox">
+                    <div class="res-icon" id="resEmoji">🎉</div>
+                    <h2>Test Yakunlandi!</h2>
+                    <p class="res-sub">Sizning koreys tilidagi bilimingiz natijasi:</p>
+                    
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="finalScore">0</span>
+                            <small>/ 10 ball</small>
+                        </div>
+                    </div>
+
+                    <div class="stats-pills">
+                        <div class="pill green-pill"><i class="fa-solid fa-check"></i> To'g'ri: <strong id="correctCount">0</strong></div>
+                        <div class="pill red-pill"><i class="fa-solid fa-xmark"></i> Noto'g'ri: <strong id="wrongCount">0</strong></div>
+                        <div class="pill blue-pill"><i class="fa-solid fa-percent"></i> Foiz: <strong id="percentScore">0%</strong></div>
+                    </div>
+
+                    <p class="motivation-text" id="motivationMsg"></p>
+
+                    <div class="hero-btns" style="justify-content: center; margin-top: 1.5rem;">
+                        <button class="btn btn-primary" onclick="restartQuiz()"><i class="fa-solid fa-rotate-right"></i> Qayta ishlash</button>
+                        <button class="btn btn-outline" onclick="showSection('results')"><i class="fa-solid fa-chart-line"></i> Natijalarimni ko'rish</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. NATIJALARIM -->
+        <section id="results" class="page-section">
+            <div class="section-header">
+                <h2>Mening Natijalarim (내 결과)</h2>
+                <p>Saytdagi faolligingiz va testlarda erishgan muvaffaqiyatlaringiz.</p>
+            </div>
+
+            <div class="results-dashboard">
+                <div class="res-stat-card">
+                    <i class="fa-solid fa-trophy stat-icon text-red"></i>
+                    <h3 id="dashBestScore">0 / 10</h3>
+                    <p>Eng yuqori natija</p>
+                </div>
+                <div class="res-stat-card">
+                    <i class="fa-solid fa-gamepad stat-icon text-blue"></i>
+                    <h3 id="dashTotalAttempts">0</h3>
+                    <p>Urinishlar soni</p>
+                </div>
+                <div class="res-stat-card">
+                    <i class="fa-solid fa-bullseye stat-icon text-red"></i>
+                    <h3 id="dashLastScore">--</h3>
+                    <p>Oxirgi natija</p>
+                </div>
+            </div>
+
+            <div class="history-box">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Oxirgi Urinishlar</h3>
+                <div id="historyList" class="history-list">
+                    <p class="no-data">Hali test topshirilmadi.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p><strong>K-LEARN 🇰🇷</strong> — Koreys tilini o'rganish bo'yicha zamonaviy platforma.</p>
+            <p>© 2026 Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
